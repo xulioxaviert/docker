@@ -45,3 +45,6 @@ CMD ["python", "app.py"]
 
 # 9. Eliminar una imagen:
 #    docker rmi <image_id>  
+
+# 10 Con este comando levantamos el contenedor
+#    docker run -p 5000:5000 mi-python-image
