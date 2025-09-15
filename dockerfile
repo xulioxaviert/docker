@@ -48,3 +48,27 @@ CMD ["python", "app.py"]
 
 # 10 Con este comando levantamos el contenedor
 #    docker run -p 5000:5000 mi-python-image
+
+####################### Ejercicio 2 ##########################
+
+FROM python:3.9
+
+# Establecemos el directorio de trabajo
+WORKDIR /app
+
+# Instalamos las dependencias
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Variables de entorno
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=mysql
+ENV MYSQL_HOST=root
+ENV MYSQL_PASSWORD=password
+ENV MYSQL_DB=my_db
+
+# Exponemos el puerto
+EXPOSE 5000
+# Comando para ejecutar la aplicación
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+
